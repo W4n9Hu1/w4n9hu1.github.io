@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Git常用命令"/>
+
+
+
+
+  <meta name="keywords" content="Code,Git," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="w4n9hu1的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://w4n9hu1.github.io/2019/09/18/Git常用命令/"/>
+
+
+<meta name="description" content="用户配置  git config –global user.name w4n9hu1 git config –global user.email wanghui89757@gmail.com   版本控制  git init git add Git.md git commit -m “add Git.md” git status git diff git log 查看提交历史 git reset">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令">
+<meta property="og:url" content="https://w4n9hu1.github.io/2019/09/18/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="w4n9hu1的博客">
+<meta property="og:description" content="用户配置  git config –global user.name w4n9hu1 git config –global user.email wanghui89757@gmail.com   版本控制  git init git add Git.md git commit -m “add Git.md” git status git diff git log 查看提交历史 git reset">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-18T05:53:52.000Z">
+<meta property="article:modified_time" content="2021-08-27T01:26:15.522Z">
+<meta property="article:author" content="w4n9hu1">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Git常用命令 - w4n9hu1的博客 </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">w4n9hu1的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Git常用命令
+        
+      </h1>
+
+      <time class="post-time">
+          9月 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <ol>
+<li><p>用户配置</p>
+<ul>
+<li>git config –global user.name w4n9hu1</li>
+<li>git config –global user.email <a href="mailto:wanghui89757@gmail.com">wanghui89757@gmail.com</a></li>
+</ul>
+</li>
+<li><p>版本控制</p>
+<ul>
+<li>git init</li>
+<li>git add Git.md</li>
+<li>git commit -m “add Git.md”</li>
+<li>git status</li>
+<li>git diff</li>
+<li>git log 查看提交历史</li>
+<li>git reset –hard “commit id” 恢复到指定版本</li>
+<li>git reflog 查看历史命令</li>
+<li>git checkout – Git.md 放弃工作区的修改</li>
+<li>git reset  HEAD Git.md 撤销缓存区修改</li>
+<li>git rm t.md  从版本库中删除文件</li>
+<li>git checkout – t.md 从版本库中恢复文件</li>
+<li>git tag name 默认标签是打在最新提交的commit上</li>
+<li>git tag 查看所有标签</li>
+<li>分支<ul>
+<li>git branch dev 创建分支dev</li>
+<li>git branch 显示所有分支</li>
+<li>git checkout dev 切换到分支dev</li>
+<li>git checkout -b develop origin/develop 切换到远程分支develop</li>
+<li>git merge dev 把dev分支合并到master</li>
+<li>git branch -d dev 删除dev分支</li>
+<li>–no-ff 禁用Fast forward模式，merge时生成一个新的commit，从分支历史上就可以看出分支信息。</li>
+<li>git push origin dev 推送其他分支，Github自动创建该分支</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>远程仓库Github</p>
+<ul>
+<li>ssh-keygen -t rsa -C <a href="mailto:wanghui89757@gmail.com">wanghui89757@gmail.com</a> 创建SSH Key</li>
+<li>~/.ssh/id_rsa.pub</li>
+<li>Github&gt;settings&gt;New SSH Key</li>
+<li>git remote add origin <a href="https://github.com/W4n9Hu1/Articles.git" target="_blank" rel="noopener">https://github.com/W4n9Hu1/Articles.git</a> 关联远程仓库，origin默认远程仓库名</li>
+<li>git push -u origin master 本地库推送到远程库</li>
+<li>git push origin master 把本地master分支推送到Github</li>
+<li>git clone <a href="https://github.com/W4n9Hu1/Articles.git" target="_blank" rel="noopener">https://github.com/W4n9Hu1/Articles.git</a> 从远程仓库克隆到本地</li>
+<li>git branch dev 创建分支dev</li>
+<li>git checkout dev 切换到分支dev</li>
+<li>git remote -v 查看远程库信息</li>
+<li>git pull 从远程拉取分支</li>
+<li>git branch -r 查看远程分支</li>
+<li>git push origin –delete dev 删除远程分支</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>git add -A . 添加所有改变的文件</li>
+<li>git add . 添加新文件和编辑过的文件不包括删除的文件</li>
+<li>git add -A 添加所有内容</li>
+<li>git add -u 添加编辑或者删除的文件，不包括新添加的文件。</li>
+<li>-u 把本地的master分支内容推送的远程新的master分支，并且把两者关联起来</li>
+<li>git log –graph –pretty=oneline –abbrev-commit 查看分支合并情况</li>
+<li>提交所有文件</li>
+<li>mkdir 新建一个子目录</li>
+<li>rm 删除一个目录中的一个或多个文件或目录，也可以将某个目录及其下属的所有文件及其子目录均删除掉</li>
+<li>针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行没有 –global 选项的用户配置命令来配置</li>
+<li>Repository 版本库</li>
+</ul>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Code/">Code</a>
+		  
+			<a href="/tags/Git/">Git</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/10/23/XPath%E8%AF%AD%E6%B3%95/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">XPath语法</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2019 -
+    
+    2021
+    <span class="footer-author">w4n9hu1.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
