@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="登录技术调研"/>
+
+
+
+
+  <meta name="keywords" content="Code,Encryption," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="w4n9hu1的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://w4n9hu1.github.io/2021/06/13/登录技术调研/"/>
+
+
+<meta name="description" content="开放授权 OAuth（ The OAuth 2.0 Authorization Framework）rfc6749  授权码模式 第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数； 通过code参数加上AppID和AppSecret等，通过API换取access_token； 通过access_token进行接口调用，获">
+<meta property="og:type" content="article">
+<meta property="og:title" content="登录技术调研">
+<meta property="og:url" content="https://w4n9hu1.github.io/2021/06/13/%E7%99%BB%E5%BD%95%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/index.html">
+<meta property="og:site_name" content="w4n9hu1的博客">
+<meta property="og:description" content="开放授权 OAuth（ The OAuth 2.0 Authorization Framework）rfc6749  授权码模式 第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数； 通过code参数加上AppID和AppSecret等，通过API换取access_token； 通过access_token进行接口调用，获">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-13T03:20:19.000Z">
+<meta property="article:modified_time" content="2021-08-27T03:26:59.216Z">
+<meta property="article:author" content="w4n9hu1">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Encryption">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 登录技术调研 - w4n9hu1的博客 </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">w4n9hu1的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          登录技术调研
+        
+      </h1>
+
+      <time class="post-time">
+          6月 13 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="开放授权-OAuth（-The-OAuth-2-0-Authorization-Framework）"><a href="#开放授权-OAuth（-The-OAuth-2-0-Authorization-Framework）" class="headerlink" title="开放授权 OAuth（ The OAuth 2.0 Authorization Framework）"></a>开放授权 OAuth（ The OAuth 2.0 Authorization Framework）</h2><p><a href="https://datatracker.ietf.org/doc/html/rfc6749" target="_blank" rel="noopener">rfc6749</a></p>
+<ol>
+<li>授权码模式</li>
+<li>第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数；</li>
+<li>通过code参数加上AppID和AppSecret等，通过API换取access_token；</li>
+<li>通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。</li>
+<li>隐藏式 令牌的位置是 URL 锚点</li>
+<li>账号密码</li>
+<li>凭证</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;access_token&quot;: &quot;ACCESS_TOKEN&quot;,</span><br><span class="line">  &quot;expires_in&quot;: 7200,</span><br><span class="line">  &quot;refresh_token&quot;: &quot;REFRESH_TOKEN&quot;,</span><br><span class="line">  &quot;openid&quot;: &quot;OPENID&quot;,</span><br><span class="line">  &quot;scope&quot;: &quot;SCOPE&quot;,</span><br><span class="line">  &quot;unionid&quot;: &quot;o6_bmasdasdsad6_2sgVt7hMZOPfL&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用场景：允许用户让第三方应用访问该用户在某一网站上存储的私密的资源，而无需将用户名和密码提供给第三方应用，主要用于资源授权</p>
+<h2 id="CAS-Protocol"><a href="#CAS-Protocol" class="headerlink" title="CAS Protocol"></a>CAS Protocol</h2><p><a href="https://apereo.github.io/cas/6.3.x/protocol/CAS-Protocol.html" target="_blank" rel="noopener">CAS Protocol</a><br>CAS Server<br>CAS Client</p>
+<ol>
+<li>局部会话（Application Session）</li>
+<li>全局会话（CAS Session）</li>
+<li>Ticket Granted Ticket，TGT：大令牌，记录某用户全局会话的状态</li>
+<li>Service Ticket，ST：小令牌，用来向CAS认证服务器（用户中心）兑换用户信息。</li>
+<li>CAS-Server（TGT）超时时间 &gt;= CAS-Client的超时时间</li>
+</ol>
+<p>使用场景：解决一次登录，跨域名多处登录场景，客户端单独建立会话，多站点会话同步需要额外逻辑。</p>
+<h2 id="IdentityServer4"><a href="#IdentityServer4" class="headerlink" title="IdentityServer4"></a>IdentityServer4</h2><h2 id="OIDC"><a href="#OIDC" class="headerlink" title="OIDC"></a>OIDC</h2><h2 id="统一账号-统一认证系统-LDAP"><a href="#统一账号-统一认证系统-LDAP" class="headerlink" title="统一账号/统一认证系统 (LDAP)"></a>统一账号/统一认证系统 (LDAP)</h2>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Code/">Code</a>
+		  
+			<a href="/tags/Encryption/">Encryption</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/08/14/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">现代密码学</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/03/11/%E6%AD%A6%E6%B1%89%E5%8C%BB%E7%94%9F/">
+        <span class="next-text nav-default">武汉医生</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2019 -
+    
+    2021
+    <span class="footer-author">w4n9hu1.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
